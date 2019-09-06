@@ -1,6 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--扫描service包-->
+    <context:component-scan base-package="com.bookstore.service" />
+
+    <!--数据库连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="jdbc:mysql:///taojin?serverTimezone=UTC" />
+        <property name="username" value="root" />
+        <property name="password" value="hua" />
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+        <property name="maxActive" value="10" />
+        <property name="maxIdle" value="5" />
+        <property name="minIdle" value="1" />
+    </bean>
+
+    <!--配置sqlSessionFactory-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="factory">
+        <property name="dataSource" ref="dataSource" />
+        <property name="typeAliasesPackage" value="com.bookstore.pojo" />
+        <property name="configLocation" value="classpath:mybatis.xml" />
+    </bean>
+
+    <!--配置扫描包,加载mapper文件-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.bookstore.mapper" />
+        <property name="sqlSessionFactoryBeanName" value="factory" />
+    </bean>
+
+    <!--事务管理器-->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+        <!--数据源-->
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+    <!--配置通知-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!--事务的传播行为-->
+            <tx:method name="save*" />
+            <tx:method name="insert*" />
+            <tx:method name="add*" />
+            <tx:method name="create*" />
+            <tx:method name="delete*" />
+            <tx:method name="update*" />
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="select*" propagation="SUPPORTS" read-only="true" />
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!--配置切面-->
+    <aop:config>
+        <aop:advisor advice-ref="txAdvice"
+                     pointcut="execution(* com.bookstore.service.*.*(..))" />
+    </aop:config>
 </beans>
