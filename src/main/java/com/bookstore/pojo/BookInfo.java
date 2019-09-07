@@ -9,15 +9,15 @@ import java.io.Serializable;
  * 创建人：Mical
  */
 public class BookInfo implements Serializable {
-    private int id;
-    private String bookName;
-    private String bookDesc;
-    private Double bookPrice;
-    private String bookAuthor;
-    private String bookPress;
-    private String bookDate;
-    private String bookImg;
-    private BookCat bookCat;
+    private int id; //book索引
+    private String bookName; //书籍名称
+    private String bookDesc; //书籍描述
+    private Double bookPrice; //书籍价格
+    private String bookAuthor; //书籍作者
+    private String bookPress; //书籍出版社
+    private String bookDate; //出版日期
+    private String bookImg; //书籍封面
+    private BookCat bookCat; //书籍分类
 
     public int getId() {
         return id;
