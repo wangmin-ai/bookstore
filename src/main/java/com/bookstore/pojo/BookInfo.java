@@ -17,7 +17,7 @@ public class BookInfo implements Serializable {
     private String bookPress;
     private String bookDate;
     private String bookImg;
-    private String bookCat;
+    private BookCat bookCat;
 
     public int getId() {
         return id;
@@ -83,11 +83,11 @@ public class BookInfo implements Serializable {
         this.bookImg = bookImg;
     }
 
-    public String getBookCat() {
+    public BookCat getBookCat() {
         return bookCat;
     }
 
-    public void setBookCat(String bookCat) {
+    public void setBookCat(BookCat bookCat) {
         this.bookCat = bookCat;
     }
 
