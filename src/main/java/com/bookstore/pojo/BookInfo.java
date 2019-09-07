@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 类 名 称：BookInfo
- * 类 描 述：TODO
+ * 类 描 述：书籍详情表实体类
  * 创建时间：2019/9/7 8:49
  * 创建人：Mical
  */

@@ -2,7 +2,7 @@ package com.bookstore.pojo;
 
 /**
  * 类 名 称：BookCat
- * 类 描 述：TODO
+ * 类 描 述：分类表实体类
  * 创建时间：2019/9/7 9:24
  * 创建人：Mical
  */
