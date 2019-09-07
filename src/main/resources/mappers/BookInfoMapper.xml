@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookstore.mapper.BookInfoMapper">
+    <resultMap id="book_info" type="com.bookstore.pojo.BookInfo">
+        <id column="id" property="id" />
+        <result column="book_name" property="bookName" />
+        <result column="book_desc" property="bookDesc" />
+        <result column="book_price" property="bookPrice" />
+        <result column="book_author" property="bookAuthor" />
+        <result column="book_press" property="bookPress" />
+        <result column="book_date" property="bookDate" />
+        <result column="book_img" property="bookImg" />
+        <association property="bookCat" select="com.bookstore.mapper.BookCatMapper.getCat" javaType="com.bookstore.pojo.BookCat" column="book_cat" />
+    </resultMap>
+
+    <!--根据书名模糊查询-->
+    <select id="selectByBookName" resultMap="book_info">
+        select * from book_info
+        <if test="booName != null and bookName != ''">
+            <where>
+                book_name like "%"#{bookName}"%"
+            </where>
+        </if>
+    </select>
+
+    <!--根据书籍id查询书籍详情-->
+    <select id="selectByBookId" resultMap="book_info">
+        select * from book_info where id = #{id}
+    </select>
+</mapper>
