@@ -10,7 +10,7 @@
 
     <!--数据库连接池-->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="url" value="jdbc:mysql:///taojin?serverTimezone=UTC" />
+        <property name="url" value="jdbc:mysql:///book?serverTimezone=UTC" />
         <property name="username" value="root" />
         <property name="password" value="hua" />
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
@@ -24,6 +24,7 @@
         <property name="dataSource" ref="dataSource" />
         <property name="typeAliasesPackage" value="com.bookstore.pojo" />
         <property name="configLocation" value="classpath:mybatis.xml" />
+        <property name="mapperLocations" value="classpath:mappers/*Mapper.xml" />
     </bean>
 
     <!--配置扫描包,加载mapper文件-->
