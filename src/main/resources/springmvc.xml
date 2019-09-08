@@ -21,4 +21,7 @@
     <mvc:resources mapping="/fonts/**" location="fonts/" />
     <mvc:resources mapping="/images/**" location="images/" />
 
+    <mvc:view-controller path="/" view-name="redirect:/index" />
+    <mvc:view-controller path="/index.jsp" view-name="redirect:/index" />
+
 </beans>

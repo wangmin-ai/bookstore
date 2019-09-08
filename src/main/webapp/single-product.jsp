@@ -1,4 +1,6 @@
-﻿<!doctype html>
+﻿<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!doctype html>
 <html class="no-js" lang="zxx">
 <head>
 	<meta charset="utf-8">
@@ -13,15 +15,15 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
 
 	<!-- Stylesheets -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/plugins.css">
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/plugins.css">
+	<link rel="stylesheet" href="/css/style.css">
 
 	<!-- Cusom css -->
-   <link rel="stylesheet" href="css/custom.css">
+   <link rel="stylesheet" href="/css/custom.css">
 
 	<!-- Modernizer js -->
-	<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+	<script src="/js/vendor/modernizr-3.5.0.min.js"></script>
 </head>
 <body>
 	<!--[if lte IE 9]>
@@ -37,17 +39,16 @@
 				<div class="row">
 					<div class="col-md-4 col-sm-4 col-7 col-lg-2">
 						<div class="logo">
-							<a href="index.jsp">
-								<img src="images/logo/logo.png" alt="logo images">
+							<a href="/index">
+								<img src="/images/logo/logo.png" alt="logo images">
 							</a>
 						</div>
 					</div>
 					<div class="col-lg-8 d-none d-lg-block">
 						<nav class="mainmenu__nav">
 							<ul class="meninmenu d-flex justify-content-start">
-								<li><a href="index.jsp">主页</a></li>
-								<li><a href="shop-list.jsp">书单</a></li>
-								<li><a href="single-product.jsp">书籍介绍</a></li>
+								<li><a href="/index">主页</a></li>
+								<li><a href="/shop-list">书单</a></li>
 							</ul>
 						</nav>
 					</div>
@@ -76,7 +77,7 @@
 											<div class="miniproduct">
 												<div class="item01 d-flex">
 													<div class="thumb">
-														<a href="single-product.jsp"><img src="images/product/sm-img/1.jpg" alt="product images"></a>
+														<a href="single-product.jsp"><img src="/images/product/sm-img/1.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="single-product.jsp">Voyage Yoga Bag</a></h6>
@@ -92,7 +93,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="single-product.jsp"><img src="images/product/sm-img/3.jpg" alt="product images"></a>
+														<a href="single-product.jsp"><img src="/images/product/sm-img/3.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="single-product.jsp">Impulse Duffle</a></h6>
@@ -108,7 +109,7 @@
 												</div>
 												<div class="item01 d-flex mt--20">
 													<div class="thumb">
-														<a href="single-product.jsp"><img src="images/product/sm-img/2.jpg" alt="product images"></a>
+														<a href="single-product.jsp"><img src="/images/product/sm-img/2.jpg" alt="product images"></a>
 													</div>
 													<div class="content">
 														<h6><a href="single-product.jsp">Compete Track Tote</a></h6>
@@ -189,7 +190,7 @@
 					<div class="col-lg-12 d-none">
 						<nav class="mobilemenu__nav">
 							<ul class="meninmenu">
-								<li><a href="index.jsp">主页</a></li>
+								<li><a href="/index">主页</a></li>
 								<li><a href="shop-list.jsp">书单</a></li>
 								<li><a href="single-product.jsp">书籍信息</a></li>
 							</ul>
@@ -226,7 +227,7 @@
                         <div class="bradcaump__inner text-center">
                         	<h2 class="bradcaump-title">Shop Single</h2>
                             <nav class="bradcaump-content">
-                              <a class="breadcrumb_item" href="index.jsp">Home</a>
+                              <a class="breadcrumb_item" href="/index">Home</a>
                               <span class="brd-separetor">/</span>
                               <span class="breadcrumb_item active">Shop Single</span>
                             </nav>
@@ -246,66 +247,31 @@
         						<div class="col-lg-6 col-12">
         							<div class="wn__fotorama__wrapper">
 	        							<div class="fotorama wn__fotorama__action" data-nav="thumbs">
-		        							  <a href="1.jpg"><img src="images/product/1.jpg" alt=""></a>
-		        							  <a href="2.jpg"><img src="images/product/2.jpg" alt=""></a>
-		        							  <a href="3.jpg"><img src="images/product/3.jpg" alt=""></a>
-		        							  <a href="4.jpg"><img src="images/product/4.jpg" alt=""></a>
-		        							  <a href="5.jpg"><img src="images/product/5.jpg" alt=""></a>
-		        							  <a href="6.jpg"><img src="images/product/6.jpg" alt=""></a>
-		        							  <a href="7.jpg"><img src="images/product/7.jpg" alt=""></a>
-		        							  <a href="8.jpg"><img src="images/product/8.jpg" alt=""></a>
+		        							  <a href="1.jpg"><img src="${myBook.bookImg}" alt=""></a>
 	        							</div>
         							</div>
         						</div>
         						<div class="col-lg-6 col-12">
         							<div class="product__info__main">
-        								<h1>Chaz Kangeroo Hoodie</h1>
-        								<div class="product-info-stock-sku d-flex">
-        									<p>Availability:<span> In stock</span></p>
-        									<p>SKU:<span> MH01</span></p>
-        								</div>
-        								<div class="product-reviews-summary d-flex">
-        									<ul class="rating-summary d-flex">
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li><i class="zmdi zmdi-star-outline"></i></li>
-    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-    											<li class="off"><i class="zmdi zmdi-star-outline"></i></li>
-        									</ul>
-        									<div class="reviews-actions d-flex">
-        										<a href="#">(1 Review)</a>
-        										<a href="#">Add Your Review</a>
-        									</div>
-        								</div>
+        								<h1>${myBook.bookName}</h1>
         								<div class="price-box">
-        									<span>$52.00</span>
+        									<span>￥${myBook.bookPrice}</span>
         								</div>
-        								<div class="product-color-label">
-        									<span>Color</span>
-        									<div class="color__attribute d-flex">
-        										<div class="swatch-option color" style="background: #000000 no-repeat center; background-size: initial;"></div>
-        										<div class="swatch-option color" style="background: #8f8f8f no-repeat center; background-size: initial;"></div>
-        									</div>
-        								</div> 
         								<div class="box-tocart d-flex">
-        									<span>Qty</span>
         									<input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
         									<div class="addtocart__actions">
-        										<button class="tocart" type="submit" title="Add to Cart">Add to Cart</button>
+        										<button class="tocart" type="submit" title="Add to Cart">加入购物车</button>
+												<button class="btn btn-danger">立即购买</button>
         									</div>
         								</div>
-        								<div class="product-addto-links clearfix">
-        									<a class="wishlist" href="#"></a>
-        									<a class="compare" href="#"></a>
-        									<a class="email" href="#"></a>
-        								</div>
+										<div clas="product__overview">
+											<span class="web-font" style="font-size: 18px;">作者：${myBook.bookAuthor}</span><br />
+											<span class="web-font" style="font-size: 18px;">出版社：${myBook.bookPress}</span><br />
+											<span class="web-font" style="font-size: 18px;">出版日期：${myBook.bookDate}</span><br />
+											<span class="web-font" style="font-size: 18px;">所属类别：${myBook.bookCat.name}</span><br />
+										</div>
         								<div class="product__overview">
-        									<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.</p>
-        									<ul class="pro__attribute">
-        										<li>• Two-tone gray heather hoodie.</li>
-        										<li>• Drawstring-adjustable hood. </li>
-        										<li>• Machine wash/dry.</li>
-        									</ul>
+        									<p>${myBook.bookDesc}</p>
         								</div>
         							</div>
         						</div>
@@ -313,24 +279,11 @@
         				</div>
         				<div class="product__info__detailed">
 							<div class="pro_details_nav nav justify-content-start" role="tablist">
-	                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-details" role="tab">Details</a>
-	                            <a class="nav-item nav-link" data-toggle="tab" href="#nav-review" role="tab">Reviews</a>
+	                            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-review" role="tab">Reviews</a>
 	                        </div>
 	                        <div class="tab__container">
 	                        	<!-- Start Single Tab Content -->
-	                        	<div class="pro__tab_label tab-pane fade show active" id="nav-details" role="tabpanel">
-									<div class="description__attribute">
-										<p>Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.Ideal for cold-weather training or work outdoors, the Chaz Hoodie promises superior warmth with every wear. Thick material blocks out the wind as ribbed cuffs and bottom band seal in body heat.</p>
-										<ul>
-											<li>• Two-tone gray heather hoodie.</li>
-											<li>• Drawstring-adjustable hood. </li>
-											<li>• Machine wash/dry.</li>
-										</ul>
-									</div>
-	                        	</div>
-	                        	<!-- End Single Tab Content -->
-	                        	<!-- Start Single Tab Content -->
-	                        	<div class="pro__tab_label tab-pane fade" id="nav-review" role="tabpanel">
+	                        	<div class="pro__tab_label tab-pane fade show active" id="nav-review" role="tabpanel">
 									<div class="review__attribute">
 										<h1>Customer Reviews</h1>
 										<h2>Hastech</h2>
@@ -444,8 +397,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/1.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/2.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/1.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/2.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -481,8 +434,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/2.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/4.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/2.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/4.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -518,8 +471,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/3.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/6.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/3.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/6.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -555,8 +508,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/4.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/8.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/4.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/8.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -592,8 +545,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/9.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/2.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/9.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/2.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -629,8 +582,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/9.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/8.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/9.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/8.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -675,8 +628,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/2.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/1.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/2.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/1.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -712,8 +665,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/4.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/3.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/4.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/3.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -749,8 +702,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/6.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/5.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/6.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/5.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -786,8 +739,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/8.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/7.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/8.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/7.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -823,8 +776,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/9.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/2.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/9.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/2.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -860,8 +813,8 @@
 									<div class="col-lg-4 col-md-4 col-sm-6 col-12">
 										<div class="product">
 											<div class="product__thumb">
-												<a class="first__img" href="single-product.jsp"><img src="images/product/9.jpg" alt="product image"></a>
-												<a class="second__img animation1" href="single-product.jsp"><img src="images/product/8.jpg" alt="product image"></a>
+												<a class="first__img" href="single-product.jsp"><img src="/images/product/9.jpg" alt="product image"></a>
+												<a class="second__img animation1" href="single-product.jsp"><img src="/images/product/8.jpg" alt="product image"></a>
 												<div class="new__box">
 													<span class="new-label">New</span>
 												</div>
@@ -942,7 +895,7 @@
         						</ul>
         					</aside>
         					<aside class="wedget__categories sidebar--banner">
-								<img src="images/others/banner_left.jpg" alt="banner images">
+								<img src="/images/others/banner_left.jpg" alt="banner images">
 								<div class="text">
 									<h2>new products</h2>
 									<h6>save up to <br> <strong>40%</strong>off</h6>
@@ -997,13 +950,13 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<ul class="brand__activation arrows_style owl-carousel owl-theme">
-							<li><a href="#"><img src="images/brand/1.png" alt="brand images"></a></li>
-							<li><a href="#"><img src="images/brand/2.png" alt="brand images"></a></li>
-							<li><a href="#"><img src="images/brand/3.png" alt="brand images"></a></li>
-							<li><a href="#"><img src="images/brand/4.png" alt="brand images"></a></li>
-							<li><a href="#"><img src="images/brand/5.png" alt="brand images"></a></li>
-							<li><a href="#"><img src="images/brand/6.png" alt="brand images"></a></li>
-							<li><a href="#"><img src="images/brand/7.png" alt="brand images"></a></li>
+							<li><a href="#"><img src="/images/brand/1.png" alt="brand images"></a></li>
+							<li><a href="#"><img src="/images/brand/2.png" alt="brand images"></a></li>
+							<li><a href="#"><img src="/images/brand/3.png" alt="brand images"></a></li>
+							<li><a href="#"><img src="/images/brand/4.png" alt="brand images"></a></li>
+							<li><a href="#"><img src="/images/brand/5.png" alt="brand images"></a></li>
+							<li><a href="#"><img src="/images/brand/6.png" alt="brand images"></a></li>
+							<li><a href="#"><img src="/images/brand/7.png" alt="brand images"></a></li>
 						</ul>
 					</div>
 				</div>
@@ -1018,8 +971,8 @@
 						<div class="col-lg-12">
 							<div class="footer__widget footer__menu">
 								<div class="ft__logo">
-									<a href="index.jsp">
-										<img src="images/logo/3.png" alt="logo">
+									<a href="/index">
+										<img src="/images/logo/3.png" alt="logo">
 									</a>
 									<p>这里有许多版本的书籍，但大多数的书籍都经历了岁月的沉淀，愿您在这里找到您满意的书籍，遨游在知识的海洋</p>
 								</div>
@@ -1032,12 +985,12 @@
 										<li><a href="#"><i class="bi bi-youtube"></i></a></li>
 									</ul>
 									<ul class="mainmenu d-flex justify-content-center">
-										<li><a href="index.jsp">热门书籍</a></li>
-										<li><a href="index.jsp">畅销书作者</a></li>
-										<li><a href="index.jsp">折扣书籍</a></li>
-										<li><a href="index.jsp">愿望清单</a></li>
-										<li><a href="index.jsp">博客</a></li>
-										<li><a href="index.jsp">联系方式</a></li>
+										<li><a href="/index">热门书籍</a></li>
+										<li><a href="/index">畅销书作者</a></li>
+										<li><a href="/index">折扣书籍</a></li>
+										<li><a href="/index">愿望清单</a></li>
+										<li><a href="/index">博客</a></li>
+										<li><a href="/index">联系方式</a></li>
 									</ul>
 								</div>
 							</div>
@@ -1057,7 +1010,7 @@
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-12">
 							<div class="payment text-right">
-								<img src="images/icons/payment.png" alt="" />
+								<img src="/images/icons/payment.png" alt="" />
 							</div>
 						</div>
 					</div>
@@ -1079,7 +1032,7 @@
 		                        <!-- Start product images -->
 		                        <div class="product-images">
 		                            <div class="main-image images">
-		                                <img alt="big images" src="images/product/big-img/1.jpg">
+		                                <img alt="big images" src="/images/product/big-img/1.jpg">
 		                            </div>
 		                        </div>
 		                        <!-- end product images -->
@@ -1155,11 +1108,11 @@
 	
 
 	<!-- JS Files -->
-	<script src="js/vendor/jquery-3.2.1.min.js"></script>
-	<script src="js/popper.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/plugins.js"></script>
-	<script src="js/active.js"></script>
+	<script src="/js/vendor/jquery-3.2.1.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/plugins.js"></script>
+	<script src="/js/active.js"></script>
 	
 </body>
 </html>

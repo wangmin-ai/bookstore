@@ -25,4 +25,19 @@ public interface BookInfoMapper {
      * @return
      */
     BookInfo selectByBookId(int id);
+
+    /**
+     * 根据书籍标识id从数据库中随机赛指定数量选出数据
+     * @param identifyId 标识id
+     * @param count 数量
+     * @return
+     */
+    List<BookInfo> selectByIdentify(@Param("identifyId") int identifyId, @Param("count") int count);
+
+    /**
+     * 根据书籍的分裂id查询
+     * @param catId 分裂id
+     * @return
+     */
+    List<BookInfo> selectByCatId(int catId);
 }

@@ -29,4 +29,14 @@
     <select id="selectByBookId" resultMap="book_info">
         select * from book_info where id = #{id}
     </select>
+
+    <!--根据书籍标识查询-->
+    <select id="selectByIdentify" resultMap="book_info">
+        select * from book_info where book_indentification = #{identifyId} order by RAND() limit #{count}
+    </select>
+
+    <!--根据分类id查询-->
+    <select id="selectByCatId" resultMap="book_info">
+        select * from book_info where book_cat = #{catId}
+    </select>
 </mapper>
