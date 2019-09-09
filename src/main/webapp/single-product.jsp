@@ -142,43 +142,14 @@
                                 <div class="content-inner">
                                     <div class="switcher-currency">
                                         <strong class="label switcher-label">
-                                            <span>货币</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">人民币</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>人民币</li>
-                                                    <li>美元</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>语言</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">中文</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>中文</li>
-                                                    <li>英文</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
                                             <span>个人账户</span>
                                         </strong>
                                         <div class="switcher-options">
                                             <div class="switcher-currency-trigger">
                                                 <div class="setting__menu">
-                                                    <span><a href="#">比较产品</a></span>
                                                     <span><a href="#">我的账户</a></span>
-                                                    <span><a href="#">我的愿望清单</a></span>
-                                                    <span><a href="#">登录</a></span>
+                                                    <span><a href="#">我的购物车</a></span>
+                                                    <span><a href="/login.jsp">登录</a></span>
                                                     <span><a href="#">注册</a></span>
                                                 </div>
                                             </div>
@@ -510,7 +481,7 @@
                             <h3 class="wedget__title">产品类别</h3>
                             <ul>
                                 <c:forEach items="${bookCats}" var="cat">
-                                    <li><a href="/shop-list/${cat.id}">${cat.name}</a></li>
+                                    <li><a href="/shop-list?catId=${cat.id}">${cat.name}</a></li>
                                 </c:forEach>
                             </ul>
                         </aside>
@@ -518,7 +489,7 @@
                             <h3 class="wedget__title">产品标签</h3>
                             <ul>
                                 <c:forEach items="${cats}" var="cat">
-                                    <li><a href="/shop-list/${cat.id}">${cat.name}</a></li>
+                                    <li><a href="/shop-list?catId=${cat.id}">${cat.name}</a></li>
                                 </c:forEach>
                             </ul>
                         </aside>

@@ -49,7 +49,7 @@
                     <nav class="mainmenu__nav">
                         <ul class="meninmenu d-flex justify-content-start">
                             <li><a href="index.jsp">主页</a></li>
-                            <li><a href="shop-list.jsp">书单</a></li>
+                            <li><a href="/shop-list">书单</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -141,45 +141,14 @@
                                 <div class="content-inner">
                                     <div class="switcher-currency">
                                         <strong class="label switcher-label">
-                                            <span>货币</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">人民币</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>人民币</li>
-                                                    <li>美元</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>语言</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-
-                                                <ul class="setting__menu">
-                                                    <span><a href="#">中文</a></span>
-                                                    <span><a href="#">英文</a></span>
-
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
                                             <span>个人账户</span>
                                         </strong>
                                         <div class="switcher-options">
                                             <div class="switcher-currency-trigger">
                                                 <div class="setting__menu">
-                                                    <span><a href="#">比较书籍</a></span>
                                                     <span><a href="#">我的账户</a></span>
-                                                    <span><a href="#">我的愿望清单</a></span>
-                                                    <span><a href="#">登录</a></span>
+                                                    <span><a href="#">我的购物车</a></span>
+                                                    <span><a href="/login.jsp">登录</a></span>
                                                     <span><a href="#">注册</a></span>
                                                 </div>
                                             </div>
@@ -198,7 +167,6 @@
                         <ul class="meninmenu">
                             <li><a href="index.jsp">主页</a></li>
                             <li><a href="shop-list.jsp">书单</a></li>
-                            <li><a href="single-product.jsp">书籍介绍</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -284,9 +252,10 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                             <div class="product__thumb">
                                 <a class="first__img" href="/single-product/${book.id}"><img src="${book.bookImg}"
-                                                                                     alt="product image"></a>
-                                <a class="second__img animation1" href="/single-product/${book.id}"><img src="${book.bookImg}"
-                                                                                                 alt="product image"></a>
+                                                                                             alt="product image"></a>
+                                <a class="second__img animation1" href="/single-product/${book.id}"><img
+                                        src="${book.bookImg}"
+                                        alt="product image"></a>
                                 <div class="hot__box">
                                     <span class="hot-label">NEWEST BOOK</span>
                                 </div>
@@ -365,14 +334,19 @@
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="product__nav nav justify-content-center" role="tablist">
                         <%--<c:forEach items="${bookCat}" var="cat" varStatus="sta">--%>
-                            <%--<a class="nav-item nav-link active" data-toggle="tab" href="#nav-all"--%>
-                               <%--role="tab">${cat.name}</a>--%>
+                        <%--<a class="nav-item nav-link active" data-toggle="tab" href="#nav-all"--%>
+                        <%--role="tab">${cat.name}</a>--%>
                         <%--</c:forEach>--%>
-                        <a class="nav-item nav-link active" data-toggle="tab" href="#nav-all" role="tab">${bookCat[0].name}</a>
-                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-biographic" role="tab">${bookCat[1].name}</a>
-                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-adventure" role="tab">${bookCat[2].name}</a>
-                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-children" role="tab">${bookCat[3].name}</a>
-                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-cook" role="tab">${bookCat[4].name}</a>
+                        <a class="nav-item nav-link active" data-toggle="tab" href="#nav-all"
+                           role="tab">${bookCat[0].name}</a>
+                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-biographic"
+                           role="tab">${bookCat[1].name}</a>
+                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-adventure"
+                           role="tab">${bookCat[2].name}</a>
+                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-children"
+                           role="tab">${bookCat[3].name}</a>
+                        <a class="nav-item nav-link" data-toggle="tab" href="#nav-cook"
+                           role="tab">${bookCat[4].name}</a>
                     </div>
                 </div>
             </div>
@@ -392,7 +366,22 @@
                                             <a class="second__img animation1" href="/single-product/${book.id}"><img
                                                     src="${book.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                    <c:choose>
+                                                        <c:when test="${book.bookIndentification == 1}">
+                                                            最新上架
+                                                        </c:when>
+                                                        <c:when test="${book.bookIndentification == 2}">
+                                                            火热售卖
+                                                        </c:when>
+                                                        <c:when test="${book.bookIndentification == 3}">
+                                                            强力推荐
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            经典著作
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -430,7 +419,7 @@
                                     </div>
                                 </div>
                                 <!-- Start Single Product -->
-                                <c:set var="next" value="${cat1[stu.index + 1]}" />
+                                <c:set var="next" value="${cat1[stu.index + 1]}"/>
                                 <!-- Start Single Product -->
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                     <div class="product product__style--3">
@@ -441,7 +430,22 @@
                                             <a class="second__img animation1" href="/single-product/${next.id}"><img
                                                     src="${next.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                    <c:choose>
+                                                        <c:when test="${next.bookIndentification == 1}">
+                                                            最新上架
+                                                        </c:when>
+                                                        <c:when test="${next.bookIndentification == 2}">
+                                                            火热售卖
+                                                        </c:when>
+                                                        <c:when test="${next.bookIndentification == 3}">
+                                                            强力推荐
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            经典著作
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -499,7 +503,22 @@
                                             <a class="second__img animation1" href="/single-product/${book.id}"><img
                                                     src="${book.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                                                                        <c:choose>
+                                                                                                            <c:when test="${book.bookIndentification == 1}">
+                                                                                                                最新上架
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${book.bookIndentification == 2}">
+                                                                                                                火热售卖
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${book.bookIndentification == 3}">
+                                                                                                                强力推荐
+                                                                                                            </c:when>
+                                                                                                            <c:otherwise>
+                                                                                                                经典著作
+                                                                                                            </c:otherwise>
+                                                                                                        </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -537,7 +556,7 @@
                                     </div>
                                 </div>
                                 <!-- Start Single Product -->
-                                <c:set var="next" value="${cat2[stu.index + 1]}" />
+                                <c:set var="next" value="${cat2[stu.index + 1]}"/>
                                 <!-- Start Single Product -->
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                     <div class="product product__style--3">
@@ -548,7 +567,22 @@
                                             <a class="second__img animation1" href="/single-product/${next.id}"><img
                                                     src="${next.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                                                                        <c:choose>
+                                                                                                            <c:when test="${next.bookIndentification == 1}">
+                                                                                                                最新上架
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${next.bookIndentification == 2}">
+                                                                                                                火热售卖
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${next.bookIndentification == 3}">
+                                                                                                                强力推荐
+                                                                                                            </c:when>
+                                                                                                            <c:otherwise>
+                                                                                                                经典著作
+                                                                                                            </c:otherwise>
+                                                                                                        </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -606,7 +640,22 @@
                                             <a class="second__img animation1" href="/single-product/${book.id}"><img
                                                     src="${book.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                                                                        <c:choose>
+                                                                                                            <c:when test="${book.bookIndentification == 1}">
+                                                                                                                最新上架
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${book.bookIndentification == 2}">
+                                                                                                                火热售卖
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${book.bookIndentification == 3}">
+                                                                                                                强力推荐
+                                                                                                            </c:when>
+                                                                                                            <c:otherwise>
+                                                                                                                经典著作
+                                                                                                            </c:otherwise>
+                                                                                                        </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -644,7 +693,7 @@
                                     </div>
                                 </div>
                                 <!-- Start Single Product -->
-                                <c:set var="next" value="${cat3[stu.index + 1]}" />
+                                <c:set var="next" value="${cat3[stu.index + 1]}"/>
                                 <!-- Start Single Product -->
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                     <div class="product product__style--3">
@@ -655,7 +704,22 @@
                                             <a class="second__img animation1" href="/single-product/${next.id}"><img
                                                     src="${next.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                                                                        <c:choose>
+                                                                                                            <c:when test="${next.bookIndentification == 1}">
+                                                                                                                最新上架
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${next.bookIndentification == 2}">
+                                                                                                                火热售卖
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${next.bookIndentification == 3}">
+                                                                                                                强力推荐
+                                                                                                            </c:when>
+                                                                                                            <c:otherwise>
+                                                                                                                经典著作
+                                                                                                            </c:otherwise>
+                                                                                                        </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -713,7 +777,22 @@
                                             <a class="second__img animation1" href="/single-product/${book.id}"><img
                                                     src="${book.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                                                                        <c:choose>
+                                                                                                            <c:when test="${book.bookIndentification == 1}">
+                                                                                                                最新上架
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${book.bookIndentification == 2}">
+                                                                                                                火热售卖
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${book.bookIndentification == 3}">
+                                                                                                                强力推荐
+                                                                                                            </c:when>
+                                                                                                            <c:otherwise>
+                                                                                                                经典著作
+                                                                                                            </c:otherwise>
+                                                                                                        </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -751,7 +830,7 @@
                                     </div>
                                 </div>
                                 <!-- Start Single Product -->
-                                <c:set var="next" value="${cat4[stu.index + 1]}" />
+                                <c:set var="next" value="${cat4[stu.index + 1]}"/>
                                 <!-- Start Single Product -->
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                     <div class="product product__style--3">
@@ -762,7 +841,22 @@
                                             <a class="second__img animation1" href="/single-product/${next.id}"><img
                                                     src="${next.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                                                                        <c:choose>
+                                                                                                            <c:when test="${next.bookIndentification == 1}">
+                                                                                                                最新上架
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${next.bookIndentification == 2}">
+                                                                                                                火热售卖
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${next.bookIndentification == 3}">
+                                                                                                                强力推荐
+                                                                                                            </c:when>
+                                                                                                            <c:otherwise>
+                                                                                                                经典著作
+                                                                                                            </c:otherwise>
+                                                                                                        </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -820,7 +914,22 @@
                                             <a class="second__img animation1" href="/single-product/${book.id}"><img
                                                     src="${book.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                                                                        <c:choose>
+                                                                                                            <c:when test="${book.bookIndentification == 1}">
+                                                                                                                最新上架
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${book.bookIndentification == 2}">
+                                                                                                                火热售卖
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${book.bookIndentification == 3}">
+                                                                                                                强力推荐
+                                                                                                            </c:when>
+                                                                                                            <c:otherwise>
+                                                                                                                经典著作
+                                                                                                            </c:otherwise>
+                                                                                                        </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -858,7 +967,7 @@
                                     </div>
                                 </div>
                                 <!-- Start Single Product -->
-                                <c:set var="next" value="${cat5[stu.index + 1]}" />
+                                <c:set var="next" value="${cat5[stu.index + 1]}"/>
                                 <!-- Start Single Product -->
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-12">
                                     <div class="product product__style--3">
@@ -869,7 +978,22 @@
                                             <a class="second__img animation1" href="/single-product/${next.id}"><img
                                                     src="${next.bookImg}" alt="product image"></a>
                                             <div class="hot__box">
-                                                <span class="hot-label">BEST SALER</span>
+                                                <span class="hot-label">
+                                                                                                        <c:choose>
+                                                                                                            <c:when test="${next.bookIndentification == 1}">
+                                                                                                                最新上架
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${next.bookIndentification == 2}">
+                                                                                                                火热售卖
+                                                                                                            </c:when>
+                                                                                                            <c:when test="${next.bookIndentification == 3}">
+                                                                                                                强力推荐
+                                                                                                            </c:when>
+                                                                                                            <c:otherwise>
+                                                                                                                经典著作
+                                                                                                            </c:otherwise>
+                                                                                                        </c:choose>
+                                                </span>
                                             </div>
                                         </div>
                                         <div class="product__content content--center content--center">
@@ -1001,7 +1125,7 @@
                 <div class="product product__style--3">
                     <div class="product__thumb">
                         <a class="first__img" href="/single-product/${book.id}"><img src="${book.bookImg}"
-                                                                             alt="product image"></a>
+                                                                                     alt="product image"></a>
                     </div>
                     <div class="product__content content--center">
                         <div class="action">

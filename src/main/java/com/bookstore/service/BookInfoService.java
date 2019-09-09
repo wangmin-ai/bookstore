@@ -1,6 +1,7 @@
 package com.bookstore.service;
 
 import com.bookstore.pojo.BookInfo;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface BookInfoService {
     List<BookInfo> getBooksByIndentify(int identifyId, int count);
     List<BookInfo> getBooksByCat(int catId);
     BookInfo getBookById(int id);
-    List<BookInfo> getRandBooks(int pageNum, int pageSize);
+    PageInfo getRandBooks(int pageNum, int pageSize);
 }

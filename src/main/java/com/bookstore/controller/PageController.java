@@ -4,6 +4,7 @@ import com.bookstore.pojo.BookCat;
 import com.bookstore.pojo.BookInfo;
 import com.bookstore.service.BookCatService;
 import com.bookstore.service.BookInfoService;
+import com.github.pagehelper.PageInfo;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -91,15 +92,32 @@ public class PageController {
     @RequestMapping("/shop-list")
     public ModelAndView getBooks(ModelAndView modelAndView, @RequestParam(value = "catId", defaultValue = "0") int catId,
                                  @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-                                 @RequestParam(value = "pageSize", defaultValue = "10") int pageSize){
+                                 @RequestParam(value = "pageSize", defaultValue = "12") int pageSize){
         if (catId == 0) {
-            List<BookInfo> randBooks = bookInfoService.getRandBooks(pageNum, pageSize);
+            PageInfo randBooks = bookInfoService.getRandBooks(pageNum, pageSize);
             modelAndView.addObject("books", randBooks);
         }else {
-            List<BookInfo> booksByCat = bookInfoService.getBooksByCat(catId);
-            modelAndView.addObject("books", booksByCat);
+            List<BookInfo> books = new ArrayList<>();
+            List<BookCat> allBookCatsById = bookCatService.getAllBookCatsById(catId);
+            allBookCatsById.forEach(item ->
+                books.addAll(bookInfoService.getBooksByCat(item.getId()))
+            );
+            List<BookInfo> bookInfos = new ArrayList<>();
+            if (bookInfos.size() > pageSize) {
+                bookInfos = books.subList((pageNum - 1) * pageSize, pageNum * pageSize);
+            }else {
+                bookInfos = books;
+            }
+            PageInfo pageInfo = new PageInfo(bookInfos);
+            pageInfo.setPageNum(pageNum);
+            pageInfo.setPageSize(pageSize);
+            List<BookCat> deepCats = bookCatService.getAllDeepCatsById(catId);
+            modelAndView.addObject("books", pageInfo);
+            modelAndView.addObject("deepCats", deepCats);
         }
+        List<BookCat> bookCats = bookCatService.getRandomBookCats(1, 25);
 
+        modelAndView.addObject("bookCats", bookCats);
         modelAndView.setViewName("shop-list");
         return modelAndView;
     }

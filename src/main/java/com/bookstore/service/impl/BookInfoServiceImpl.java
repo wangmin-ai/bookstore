@@ -4,6 +4,7 @@ import com.bookstore.mapper.BookInfoMapper;
 import com.bookstore.pojo.BookInfo;
 import com.bookstore.service.BookInfoService;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,9 +58,10 @@ public class BookInfoServiceImpl implements BookInfoService {
      * @return
      */
     @Override
-    public List<BookInfo> getRandBooks(int pageNum, int pageSize) {
+    public PageInfo getRandBooks(int pageNum, int pageSize) {
         PageHelper.startPage(pageNum, pageSize);
         List<BookInfo> bookInfos = bookInfoMapper.selectRandBooks();
-        return bookInfos;
+        PageInfo pageInfo = new PageInfo(bookInfos);
+        return pageInfo;
     }
 }

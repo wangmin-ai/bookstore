@@ -142,42 +142,14 @@
                                 <div class="content-inner">
                                     <div class="switcher-currency">
                                         <strong class="label switcher-label">
-                                            <span>货币</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">人民币</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>人民币</li>
-                                                    <li>美元</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
-                                            <span>语言</span>
-                                        </strong>
-                                        <div class="switcher-options">
-                                            <div class="switcher-currency-trigger">
-                                                <span class="currency-trigger">中文</span>
-                                                <ul class="switcher-dropdown">
-                                                    <li>英语</li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="switcher-currency">
-                                        <strong class="label switcher-label">
                                             <span>个人账户</span>
                                         </strong>
                                         <div class="switcher-options">
                                             <div class="switcher-currency-trigger">
                                                 <div class="setting__menu">
-                                                    <span><a href="#">比较书籍</a></span>
                                                     <span><a href="#">我的账户</a></span>
-                                                    <span><a href="#">我的愿望清单</a></span>
-                                                    <span><a href="#">登录</a></span>
+                                                    <span><a href="#">我的购物车</a></span>
+                                                    <span><a href="/login.jsp">登录</a></span>
                                                     <span><a href="#">注册</a></span>
                                                 </div>
                                             </div>
@@ -249,43 +221,20 @@
                         <aside class="wedget__categories poroduct--cat">
                             <h3 class="wedget__title">产品类别</h3>
                             <ul>
-                                <li><a href="#">小说 <span>(3)</span></a></li>
-                                <li><a href="#">教材 <span>(4)</span></a></li>
-                            </ul>
-                        </aside>
-                        <aside class="wedget__categories pro--range">
-                            <h3 class="wedget__title">价格过滤器</h3>
-                            <div class="content-shopby">
-                                <div class="price_filter s-filter clear">
-                                    <form action="#" method="GET">
-                                        <div id="slider-range"></div>
-                                        <div class="slider__range--output">
-                                            <div class="price__output--wrap">
-                                                <div class="price--output">
-                                                    <span>价格 :</span><input type="text" id="amount" readonly="">
-                                                </div>
-                                                <div class="price--filter">
-                                                    <a href="#">过滤器</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </aside>
-                        <aside class="wedget__categories poroduct--compare">
-                            <h3 class="wedget__title">对比</h3>
-                            <ul>
-                                <li><a href="#">￥35</a><a href="#">新华文轩网络书城</a></li>
-                                <li><a href="#">￥33.5</a><a href="#">中华书店</a></li>
-                                <li><a href="#">￥34.9</a><a href="#">文学译林</a></li>
+                                <c:forEach items="${bookCats}" var="cat">
+                                    <li><a href="/shop-list?catId=${cat.id}">${cat.name}</a></li>
+                                </c:forEach>
                             </ul>
                         </aside>
                         <aside class="wedget__categories poroduct--tag">
                             <h3 class="wedget__title">产品标签</h3>
                             <ul>
-                                <li><a href="#">小说</a></li>
-                                <li><a href="#">教材</a></li>
+                                <c:if test="${empty deepCats}">图书</c:if>
+                                <c:if test="${!empty deepCats}">
+                                    <c:forEach items="${deepCats}" var="cat">
+                                        ${cat.name}
+                                    </c:forEach>
+                                </c:if>
                             </ul>
                         </aside>
                         <aside class="wedget__categories sidebar--banner">
@@ -325,7 +274,7 @@
                         <div class="shop-grid tab-pane fade" id="nav-grid" role="tabpanel">
                             <div class="row">
                                 <!-- Start Single Product -->
-                                <c:forEach items="${books}" var="book">
+                                <c:forEach items="${books.list}" var="book">
                                     <div class="col-lg-4 col-md-4 col-sm-6 col-12">
                                         <div class="product">
                                             <div class="product__thumb">
@@ -334,7 +283,22 @@
                                                 <a class="second__img animation1" href="/single-product/${book.id}"><img
                                                         src="${book.bookImg}" alt="product image"></a>
                                                 <div class="new__box">
-                                                    <span class="new-label">Hot</span>
+                                                    <span class="new-label">
+                                                        <c:choose>
+                                                            <c:when test="${book.bookIndentification == 1}">
+                                                                最新上架
+                                                            </c:when>
+                                                            <c:when test="${book.bookIndentification == 2}">
+                                                                火热售卖
+                                                            </c:when>
+                                                            <c:when test="${book.bookIndentification == 3}">
+                                                                强力推荐
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                经典著作
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </span>
                                                 </div>
                                                 <ul class="prize position__right__bottom d-flex">
                                                     <li>￥${book.bookPrice}</li>
@@ -368,18 +332,21 @@
                                 </c:forEach>
                                 <!-- End Single Product -->
                             </div>
+                            <br />
+                            <br />
                             <ul class="wn__pagination">
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#"><i class="zmdi zmdi-chevron-right"></i></a></li>
+                                <c:if test="${!books.isFirstPage}">
+                                    <button class="btn btn-info"><a href="/shop-list?pageNum=${books.pageNum - 1}">上一页</a></button>
+                                </c:if>
+                                <c:if test="${!books.isLastPage}">
+                                    <button class="btn btn-info"><a href="/shop-list?pageNum=${books.pageNum + 1}">下一页</a></button>
+                                </c:if>
                             </ul>
                         </div>
                         <div class="shop-grid tab-pane fade show active" id="nav-list" role="tabpanel">
                             <div class="list__view__wrapper">
                                 <!-- Start Single Product -->
-                                <c:forEach items="${books}" var="book">
+                                <c:forEach items="${books.list}" var="book">
                                     <div class="list__view">
                                         <div class="thumb">
                                             <a class="first__img" href="/single-product/${book.id}"><img
@@ -414,6 +381,16 @@
                                 </c:forEach>
                                 <!-- End Single Product -->
                             </div>
+                            <br/>
+                            <br/>
+                            <ul class="wn__pagination">
+                                <c:if test="${!books.isFirstPage}">
+                                    <button class="btn btn-info"><a href="/shop-list?pageNum=${books.pageNum - 1}">上一页</a></button>
+                                </c:if>
+                                <c:if test="${!books.isLastPage}">
+                                    <button class="btn btn-info"><a href="/shop-list?pageNum=${books.pageNum + 1}">下一页</a></button>
+                                </c:if>
+                            </ul>
                         </div>
                     </div>
                 </div>
