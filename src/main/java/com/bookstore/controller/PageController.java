@@ -4,10 +4,12 @@ import com.bookstore.pojo.BookCat;
 import com.bookstore.pojo.BookInfo;
 import com.bookstore.service.BookCatService;
 import com.bookstore.service.BookInfoService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -63,11 +65,42 @@ public class PageController {
         return modelAndView;
     }
 
+    /**
+     * 书籍详情的访问并加载数据
+     * @param modelAndView
+     * @param id
+     * @return
+     */
     @RequestMapping("/single-product/{id}")
     public ModelAndView getBookInfo(ModelAndView modelAndView, @PathVariable("id") int id){
         BookInfo myBook = bookInfoService.getBookById(id);
+        List<BookInfo> newBooks = bookInfoService.getBooksByIndentify(1, 10);
+        List<BookInfo> recommendBooks = bookInfoService.getBooksByIndentify(3, 10);
+        List<BookCat> bookCats = bookCatService.getRandomBookCats(1, 25);
+        List<BookCat> cats = bookCatService.getAllDeepCatsById(myBook.getBookCat().getId());
+
+        modelAndView.addObject("cats", cats);
+        modelAndView.addObject("bookCats", bookCats);
+        modelAndView.addObject("newBooks", newBooks);
+        modelAndView.addObject("recommendBooks", recommendBooks);
         modelAndView.addObject("myBook", myBook);
         modelAndView.setViewName("/single-product");
+        return modelAndView;
+    }
+
+    @RequestMapping("/shop-list")
+    public ModelAndView getBooks(ModelAndView modelAndView, @RequestParam(value = "catId", defaultValue = "0") int catId,
+                                 @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+                                 @RequestParam(value = "pageSize", defaultValue = "10") int pageSize){
+        if (catId == 0) {
+            List<BookInfo> randBooks = bookInfoService.getRandBooks(pageNum, pageSize);
+            modelAndView.addObject("books", randBooks);
+        }else {
+            List<BookInfo> booksByCat = bookInfoService.getBooksByCat(catId);
+            modelAndView.addObject("books", booksByCat);
+        }
+
+        modelAndView.setViewName("shop-list");
         return modelAndView;
     }
 }

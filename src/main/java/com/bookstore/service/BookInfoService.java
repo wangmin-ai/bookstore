@@ -14,4 +14,5 @@ public interface BookInfoService {
     List<BookInfo> getBooksByIndentify(int identifyId, int count);
     List<BookInfo> getBooksByCat(int catId);
     BookInfo getBookById(int id);
+    List<BookInfo> getRandBooks(int pageNum, int pageSize);
 }

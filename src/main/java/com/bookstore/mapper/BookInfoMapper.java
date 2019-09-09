@@ -40,4 +40,11 @@ public interface BookInfoMapper {
      * @return
      */
     List<BookInfo> selectByCatId(int catId);
+
+    /**
+     * 随机查找数据
+     * @param count 数量
+     * @return
+     */
+    List<BookInfo> selectRandBooks();
 }

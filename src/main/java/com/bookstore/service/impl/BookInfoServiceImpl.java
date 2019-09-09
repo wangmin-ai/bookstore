@@ -3,6 +3,7 @@ package com.bookstore.service.impl;
 import com.bookstore.mapper.BookInfoMapper;
 import com.bookstore.pojo.BookInfo;
 import com.bookstore.service.BookInfoService;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,5 +50,16 @@ public class BookInfoServiceImpl implements BookInfoService {
     @Override
     public BookInfo getBookById(int id) {
         return bookInfoMapper.selectByBookId(id);
+    }
+
+    /**
+     * 随机从数据库中查找数据
+     * @return
+     */
+    @Override
+    public List<BookInfo> getRandBooks(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<BookInfo> bookInfos = bookInfoMapper.selectRandBooks();
+        return bookInfos;
     }
 }

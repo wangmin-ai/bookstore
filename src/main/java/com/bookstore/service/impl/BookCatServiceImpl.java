@@ -6,6 +6,7 @@ import com.bookstore.service.BookCatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,6 +42,24 @@ public class BookCatServiceImpl implements BookCatService {
     @Override
     public List<BookCat> getRandomBookCats(int parentId, int count) {
         return bookCatMapper.getParentCat(parentId, count);
+    }
+
+    /**
+     * 根据某个catID查询到跟cat
+     * @param id
+     * @return
+     */
+    @Override
+    public List<BookCat> getAllDeepCatsById(int id) {
+        List<BookCat> list = new ArrayList<>();
+        BookCat cat = bookCatMapper.getCat(id);
+        list.add(cat);
+        while (cat != null){
+            cat = bookCatMapper.getCat(cat.getParentId());
+            list.add(cat);
+        }
+        list.remove(list.size() - 1);
+        return list;
     }
 
     /**

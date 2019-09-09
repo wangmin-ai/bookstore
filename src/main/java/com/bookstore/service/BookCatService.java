@@ -14,4 +14,6 @@ public interface BookCatService {
     List<BookCat> getAllBookCatsById(int id);
 
     List<BookCat> getRandomBookCats(int parentId, int count);
+
+    List<BookCat> getAllDeepCatsById(int id);
 }
