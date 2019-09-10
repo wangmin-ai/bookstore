@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookstore.mapper.OrderDetailsMapper">
+<resultMap id="order_details" type="com.bookstore.pojo.OrderDetails">
+    <id property="id" column="id"/>
+    <result column="order_id" property="order_id"/>
+    <result column="book_id" property="book_id"/>
+    <result column="book_number" property="book_number"/>
+</resultMap>
+    <select id="selectByid" resultMap="order_details">
+        SELECT * FROM order_details
+        WHERE id = #{id}
+    </select>
+
+</mapper>

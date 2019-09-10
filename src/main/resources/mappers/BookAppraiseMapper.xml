@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bookstore.mapper.BookAppraiseMapper">
+<resultMap id="book_appraise" type="com.bookstore.pojo.BookAppraise">
+    <id property="id" column="id"/>
+    <result column="user_id" property="" />
+    <result column="reply_user_id" property="reply_user_id" />
+    <result column="book_id" property="book_id" />
+    <result column="talk_time" property="talk_time" />
+    <result column="talk_content" property="talk_content" />
+</resultMap>
+    <select id="selectByid" resultMap="book_appraise">
+        select * from book_appraise
+        <if test="talk_content != null">
+            where id = #{id}
+        </if>
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete from book_appraise
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <insert id="insertContent" parameterType="com.bookstore.pojo.BookAppraise">
+    insert into book_appraise(id,user_id,book_id,
+        talk_time,talk_content)
+    values (#{id,jdbcType=INTEGER}, #{user_id,jdbcType=VARCHAR},#{book_id,jdbcType=VARCHAR},
+       #{talk_time,jdbcType=VARCHAR}, #{talk_content,jdbcType=VARCHAR})
+  </insert>
+
+</mapper>
