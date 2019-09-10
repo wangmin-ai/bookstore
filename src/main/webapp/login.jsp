@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>登录</title>
     <link rel="stylesheet" href="/css/auth.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>

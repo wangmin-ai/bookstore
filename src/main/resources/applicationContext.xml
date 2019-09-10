@@ -15,7 +15,6 @@
         <property name="password" value="hua" />
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
         <property name="maxActive" value="10" />
-        <property name="maxIdle" value="5" />
         <property name="minIdle" value="1" />
     </bean>
 

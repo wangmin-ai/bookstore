@@ -12,8 +12,8 @@ import java.util.Date;
 public class BookUser implements Serializable {
     private int userId;
     private String userName;
-    private String password;
-    private String telephone;
+    private String userPassword;
+    private String userEmail;
     private String picture;
     private Date createTime;
 
@@ -33,20 +33,20 @@ public class BookUser implements Serializable {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
-    public String getTelephone() {
-        return telephone;
+    public String getUserEmail() {
+        return userEmail;
     }
 
-    public void setTelephone(String telephone) {
-        this.telephone = telephone;
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public String getPicture() {
@@ -64,4 +64,5 @@ public class BookUser implements Serializable {
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
+
 }

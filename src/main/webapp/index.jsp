@@ -22,6 +22,7 @@
 
     <!-- Cusom css -->
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
     <!-- Modernizer js -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
