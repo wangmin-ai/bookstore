@@ -10,6 +10,8 @@ public interface OrderDetailsMapper {
    * @param id
    * @return
     * */
-    List<OrderDetails> selectByid(int id);
+    List<OrderDetails> selectById(int id);
 
+    /*新建订单*/
+    void insertOrder(OrderDetails orderDetails);
 }

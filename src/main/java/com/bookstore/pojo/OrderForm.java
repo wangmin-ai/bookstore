@@ -18,6 +18,7 @@ public class OrderForm {
     private Integer allNumber;
     private Date orderCreateTime;
 
+
     public BookUser getBookUser() {
         return bookUser;
     }
@@ -80,5 +81,20 @@ public class OrderForm {
 
     public void setOrderCreateTime(Date orderCreateTime) {
         this.orderCreateTime = orderCreateTime;
+    }
+
+
+    @Override
+    public String toString() {
+        return "OrderForm{" +
+                "order_id=" + orderId +
+                ", user_id=" + bookUser.getUserId() +
+                ", receiverName='" + receiverName + '\'' +
+                ", receiverTelephone='" + receiverTelephone + '\'' +
+                ", receiverAddress=" + receiverAddress +
+                ", allCost='" + allCost + '\'' +
+                ", allNumber='" + allNumber + '\'' +
+                ", orderCreateTime='" + orderCreateTime + '\'' +
+                '}';
     }
 }

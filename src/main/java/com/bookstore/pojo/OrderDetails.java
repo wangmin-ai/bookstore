@@ -8,9 +8,10 @@ package com.bookstore.pojo;
  */
 public class OrderDetails {
     private Integer id;
-    private OrderForm orderForm;
+    private Integer orderId;
     private BookInfo bookInfo;
     private Integer bookNumber;
+    private Double bookPrice;
 
     public Integer getId() {
         return id;
@@ -20,12 +21,20 @@ public class OrderDetails {
         this.id = id;
     }
 
-    public OrderForm getOrderForm() {
-        return orderForm;
+    public Double getBookPrice() {
+        return bookPrice;
     }
 
-    public void setOrderForm(OrderForm orderForm) {
-        this.orderForm = orderForm;
+    public void setBookPrice(Double bookPrice) {
+        this.bookPrice = bookPrice;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public BookInfo getBookInfo() {
@@ -42,5 +51,17 @@ public class OrderDetails {
 
     public void setBookNumber(Integer bookNumber) {
         this.bookNumber = bookNumber;
+    }
+
+
+    @Override
+    public String toString() {
+        return "order_details{" +
+                "id=" + id +
+                ", order_id='" + orderId + '\'' +
+                ", book_id=" +bookInfo.getId() +
+                ", book_number=" + bookNumber +
+                ", book_price " + bookPrice +
+                '}';
     }
 }

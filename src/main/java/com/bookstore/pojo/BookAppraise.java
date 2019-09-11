@@ -13,14 +13,14 @@ public class BookAppraise implements Serializable {
     private int id;
     private BookUser bookUser;
     private BookUser replyUser;
-    private BookInfo bookInfo;
+    private int bookId;
     private Date talkTime;
     private String talkContent;
+    private int replyId;
 
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -41,12 +41,12 @@ public class BookAppraise implements Serializable {
         this.replyUser = replyUser;
     }
 
-    public BookInfo getBookInfo() {
-        return bookInfo;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setBookInfo(BookInfo bookInfo) {
-        this.bookInfo = bookInfo;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public Date getTalkTime() {
@@ -64,4 +64,26 @@ public class BookAppraise implements Serializable {
     public void setTalkContent(String talkContent) {
         this.talkContent = talkContent;
     }
+
+
+    public int getReplyId(){
+        return replyId;
+    }
+    public void setReplyId(int replyId){
+        this.replyId=replyId;
+    }
+    @Override
+    public String toString() {
+        return "BookAppraise{" +
+                " id=" + id +
+               ", user_id='" + bookUser.getUserId() +
+                ", book_id=" + bookId +
+               ", reply_User_id=" + replyUser.getUserId() +
+                ", talk_time=" + talkTime +
+                ", talk_Content=" + talkContent +
+                ", reply_id=" +replyId +
+                '}';
+    }
+
+
 }
